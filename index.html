@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#05060d" />
+
+<title>Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior</title>
+<meta name="description" content="Bruno Goulart (Bruno Pelatieri Goulart) — Especialista em Automação com IA e Full Stack Developer Sênior. 18+ anos construindo AI Agents, automação n8n/LangChain e arquitetura enterprise. Fale agora." />
+<meta name="author" content="Bruno Pelatieri Goulart" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="keywords" content="Bruno Goulart, Bruno Pelatieri Goulart, AI Automation Specialist, Especialista em Automação com IA, Full Stack Developer Sênior, AI Agents, n8n, LangChain, LangGraph, MCP, DevOps" />
+<link rel="canonical" href="https://bru.ia.br/" />
+
+<!-- Open Graph / Social Graph -->
+<meta property="og:site_name" content="Bruno Goulart" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bru.ia.br/" />
+<meta property="og:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior" />
+<meta property="og:description" content="18+ anos de engenharia + a inteligência do futuro. Construo AI Agents que trabalham 24/7, automação com n8n/LangChain e arquitetura enterprise. Vamos conversar." />
+<meta property="og:image" content="https://bru.ia.br/public/images/og-image.webp" />
+<meta property="og:image:alt" content="Bruno Pelatieri Goulart — AI Automation Specialist e Full Stack Developer Sênior" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- X (Twitter) Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@brunopelatieri" />
+<meta name="twitter:creator" content="@brunopelatieri" />
+<meta name="twitter:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior" />
+<meta name="twitter:description" content="Transformo processos em agentes de IA que trabalham 24/7. 18+ anos de engenharia full stack + automação inteligente. Campinas/SP — remoto." />
+<meta name="twitter:image" content="https://bru.ia.br/public/images/og-image.webp" />
+<meta name="twitter:image:alt" content="Bruno Pelatieri Goulart — Especialista em Automação com IA" />
+
+<link rel="icon" href="public/images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="public/images/brunogoulart_logo_square.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --indigo: #3C50C4;
+  --blue: #1094E4;
+  --teal: #00CCB8;
+  --magenta: #b14cf0;
+
+  --bg: #05060d;
+  --bg-2: #080a16;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-glow: rgba(60, 80, 196, 0.45);
+
+  --text: #eef1fb;
+  --muted: #9aa3c4;
+  --faint: #6b7299;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  --grad-brand: linear-gradient(115deg, var(--indigo) 0%, var(--blue) 52%, var(--teal) 100%);
+  --grad-holo: linear-gradient(110deg, #c8d2ff 0%, #ffffff 22%, var(--blue) 48%, var(--teal) 70%, #c8d2ff 100%);
+  --grad-cta: linear-gradient(120deg, var(--indigo), var(--blue));
+
+  --ring: 0 0 0 1px var(--border);
+  --shadow-card: 0 18px 50px -28px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --content-w: 460px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* ---------- Background layers ---------- */
+.bg-canvas,
+.aurora,
+.grid-overlay,
+.vignette,
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-canvas { z-index: 0; }
+
+.aurora { z-index: -1; overflow: hidden; }
+.aurora::before,
+.aurora::after,
+.aurora .blob {
+  content: "";
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.42;
+  will-change: transform;
+}
+.aurora::before {
+  background: radial-gradient(circle, var(--indigo), transparent 62%);
+  top: -22%; left: -18%;
+  animation: drift1 26s ease-in-out infinite;
+}
+.aurora::after {
+  background: radial-gradient(circle, var(--magenta), transparent 62%);
+  bottom: -26%; right: -20%;
+  opacity: 0.3;
+  animation: drift2 32s ease-in-out infinite;
+}
+.aurora .blob {
+  background: radial-gradient(circle, var(--teal), transparent 60%);
+  top: 38%; left: 46%;
+  width: 44vmax; height: 44vmax;
+  opacity: 0.22;
+  animation: drift3 28s ease-in-out infinite;
+}
+
+@keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(8vw,6vh) scale(1.12)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-7vw,-5vh) scale(1.18)} }
+@keyframes drift3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-42%,-58%) scale(1.1)} }
+
+.grid-overlay {
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(120, 140, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 140, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 22%, #000 0%, transparent 80%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 22%, #000 0%, transparent 80%);
+  opacity: 0.6;
+}
+
+.vignette {
+  z-index: 1;
+  background: radial-gradient(ellipse 120% 90% at 50% 0%, transparent 40%, rgba(2, 3, 8, 0.55) 100%);
+}
+
+/* ---------- Stage / 9:16 column ---------- */
+.stage {
+  position: relative;
+  z-index: 2;
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: clamp(22px, 6vw, 40px) clamp(18px, 5vw, 26px) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+@media (min-width: 540px) {
+  .stage {
+    margin: 26px auto;
+    border-radius: 34px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(12, 14, 28, 0.55), rgba(6, 7, 16, 0.55));
+    box-shadow:
+      0 40px 120px -40px rgba(0, 0, 0, 0.95),
+      0 0 0 1px rgba(60, 80, 196, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand-logo { height: 26px; width: auto; opacity: 0.95; }
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  padding: 7px 13px;
+  border-radius: var(--r-pill);
+  background: rgba(0, 204, 184, 0.10);
+  border: 1px solid rgba(0, 204, 184, 0.30);
+  white-space: nowrap;
+}
+.status .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 0 rgba(0, 204, 184, 0.7);
+  animation: pulse 2.2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 204, 184, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(0, 204, 184, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 204, 184, 0); }
+}
+
+/* ---------- Hero ---------- */
+.hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+.avatar-wrap {
+  position: relative;
+  width: 128px; height: 128px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.avatar-ring {
+  position: absolute; inset: -5px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--indigo), var(--blue), var(--teal), var(--magenta), var(--indigo));
+  filter: blur(0.5px);
+  animation: spin 7s linear infinite;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 5px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 5px));
+}
+.avatar-glow {
+  position: absolute; inset: -22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(60, 80, 196, 0.55), transparent 65%);
+  filter: blur(14px);
+  z-index: -1;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.avatar {
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+  background: var(--bg-2);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 8.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  background: var(--grad-holo);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: holo 9s linear infinite;
+}
+@keyframes holo { to { background-position: 220% center; } }
+
+.role {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 4vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  min-height: 1.4em;
+}
+.role .rotator { color: var(--teal); font-weight: 600; }
+
+.tagline {
+  font-size: 14.5px;
+  color: var(--muted);
+  max-width: 38ch;
+  margin: 2px auto 0;
+}
+.tagline strong { color: var(--text); font-weight: 600; }
+
+.meta-row {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 7px 8px; margin-top: 4px;
+}
+.chip {
+  font-size: 11.5px; font-weight: 500;
+  color: var(--muted);
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.chip svg { width: 13px; height: 13px; opacity: 0.8; }
+
+/* ---------- Primary CTA ---------- */
+.cta-primary {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 20px;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+.btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+.btn--wa {
+  background: linear-gradient(120deg, #25d366, #0fb84f);
+  border-color: transparent;
+  color: #04240f;
+  box-shadow: 0 14px 34px -16px rgba(37, 211, 102, 0.8);
+}
+.btn--wa:hover { box-shadow: 0 18px 40px -14px rgba(37, 211, 102, 0.9); filter: brightness(1.05); }
+
+.btn--brand {
+  background: var(--grad-cta);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 14px 34px -16px rgba(60, 80, 196, 0.85);
+}
+.btn--brand:hover { box-shadow: 0 18px 42px -14px rgba(16, 148, 228, 0.9); filter: brightness(1.06); }
+
+/* ---------- Section ---------- */
+.section { display: flex; flex-direction: column; gap: 14px; }
+.section-head {
+  display: flex; align-items: center; gap: 10px;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.section-head::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ---------- Pillars ---------- */
+.pillar {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.pillar:hover { transform: translateY(-2px); border-color: var(--border-glow); background: var(--surface-2); }
+.pillar .ico {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(60, 80, 196, 0.14);
+  border: 1px solid rgba(60, 80, 196, 0.30);
+}
+.pillar .ico svg { width: 22px; height: 22px; stroke: var(--blue); }
+.pillar h3 {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 600; color: var(--text);
+  margin-bottom: 3px; letter-spacing: -0.01em;
+}
+.pillar p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.stat {
+  padding: 14px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.stat .num {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700;
+  background: var(--grad-brand);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.stat .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.02em; margin-top: 2px; }
+
+/* ---------- About (expandable) ---------- */
+.about {
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.about > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600; color: var(--text);
+}
+.about > summary::-webkit-details-marker { display: none; }
+.about > summary .hint { font-size: 11.5px; color: var(--faint); font-weight: 500; font-family: var(--font-body); }
+.about > summary .caret { transition: transform 0.3s ease; color: var(--blue); display: inline-flex; }
+.about[open] > summary .caret { transform: rotate(180deg); }
+.about .about-body {
+  padding: 0 18px 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.about-body p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.about-body p strong { color: var(--text); font-weight: 600; }
+.about-body .lead { font-size: 14px; color: var(--text); }
+.about-body .sign {
+  font-family: var(--font-display);
+  font-size: 13px; font-style: italic; color: var(--blue);
+  border-left: 2px solid var(--border-glow);
+  padding-left: 12px;
+}
+
+/* ---------- Tech ticker ---------- */
+.ticker {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.ticker-track {
+  display: flex; gap: 8px; width: max-content;
+  animation: scroll 32s linear infinite;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+.tech {
+  font-family: var(--font-display);
+  font-size: 12.5px; font-weight: 500;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.tech b { color: var(--teal); font-weight: 600; }
+
+/* ---------- Links ---------- */
+.links { display: flex; flex-direction: column; gap: 10px; }
+.link {
+  display: grid;
+  grid-template-columns: 24px 1fr 18px;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600; font-size: 14px;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+.link:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-glow);
+  background: var(--surface-2);
+  box-shadow: 0 16px 36px -22px rgba(60, 80, 196, 0.9);
+}
+.link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.link .lico { width: 24px; height: 24px; display: grid; place-items: center; color: var(--blue); }
+.link .lico svg { width: 22px; height: 22px; }
+.link .meta { display: flex; flex-direction: column; line-height: 1.25; }
+.link .meta small { font-size: 11.5px; font-weight: 500; color: var(--faint); }
+.link .arrow { color: var(--faint); transition: transform 0.18s ease, color 0.18s ease; }
+.link:hover .arrow { transform: translate(3px, -3px); color: var(--teal); }
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.social {
+  aspect-ratio: 1;
+  display: grid; place-items: center;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.social svg { width: 22px; height: 22px; }
+.social:hover { transform: translateY(-3px); color: var(--text); border-color: var(--border-glow); background: var(--surface-2); }
+.social:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding-top: 8px;
+}
+.footer .fnote { font-size: 11.5px; color: var(--faint); }
+.footer .domain {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 600;
+  color: var(--text);
+}
+.footer .domain span { color: var(--teal); }
+.footer a { color: var(--muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
+.footer .credit { font-size: 10.5px; color: rgba(107, 114, 153, 0.7); margin-top: 2px; }
+.footer .credit strong { color: var(--muted); font-weight: 600; }
+.footer .credit a { color: var(--faint); text-decoration: underline; text-underline-offset: 2px; }
+.footer .credit a:hover { color: var(--teal); }
+
+/* ---------- Reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+  .ticker-track { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<canvas class="bg-canvas" id="net" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><div class="blob"></div></div>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<main class="stage">
+
+  <header class="topbar reveal">
+    <img class="brand-logo" src="public/images/bruno_goulart_logo_horizontal.webp"
+         alt="Logo Bruno Goulart — Especialista em Automação com IA e Full Stack Developer"
+         width="150" height="26" />
+    <span class="status"><span class="dot" aria-hidden="true"></span> Disponível para projetos</span>
+  </header>
+
+  <section class="hero reveal" aria-labelledby="page-title">
+    <div class="avatar-wrap">
+      <span class="avatar-glow" aria-hidden="true"></span>
+      <span class="avatar-ring" aria-hidden="true"></span>
+      <img class="avatar" src="public/images/bruno_pelatieri_goulart_bizu_bru_ia.webp"
+           alt="Foto de Bruno Pelatieri Goulart, AI Automation Specialist e Full Stack Developer Sênior em Campinas, SP"
+           width="116" height="116" />
+    </div>
+
+    <h1 id="page-title">Bruno Pelatieri Goulart</h1>
+
+    <p class="role" aria-label="AI Automation Specialist e Full Stack Developer Sênior">
+      <span class="rotator" id="rotator">AI Automation Specialist</span>
+    </p>
+
+    <p class="tagline">
+      Transformo processos em <strong>agentes de IA que trabalham 24/7</strong> — unindo 18 anos de engenharia à inteligência do futuro.
+    </p>
+
+    <div class="meta-row" aria-hidden="false">
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Campinas · SP
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        18+ anos · desde 2006
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+        Remoto · Global
+      </span>
+    </div>
+  </section>
+
+  <section class="cta-primary reveal" aria-label="Contato direto">
+    <a class="btn btn--wa" href="https://wa.me/5519992496598" target="_blank" rel="noopener" data-cta="whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      Falar agora no WhatsApp
+    </a>
+    <a class="btn btn--brand" href="https://brunogoulart.com.br" target="_blank" rel="noopener" data-cta="site">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+      Site oficial — brunogoulart.com.br
+    </a>
+  </section>
+
+  <section class="section reveal" aria-labelledby="h-faco">
+    <div class="section-head"><h2 id="h-faco">O que eu faço</h2></div>
+
+    <article class="pillar">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3 3 3 0 0 1 0 6 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 0-6 3 3 0 0 1 3-3Z"/><path d="M12 14v8M8 22h8M5 8H2m20 0h-3M6.5 4.5 4 3m16 0-2.5 1.5"/></svg></span>
+      <div>
+        <h3>Automação Inteligente &amp; AI Agents</h3>
+        <p>Agentes autônomos com n8n, LangChain, LangGraph e MCP que qualificam leads, agendam e atendem 24/7 — integrados a WhatsApp, CRM e LLMs (Claude, GPT, Gemini).</p>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg></span>
+      <div>
+        <h3>Arquitetura Enterprise &amp; DevOps</h3>
+        <p>Infraestrutura escalável em Docker Swarm, Traefik e Portainer — deploy contínuo, SSL automático e observabilidade. Stacks completas de IA prontas para produção.</p>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/><path d="m13 4-2 16"/></svg></span>
+      <div>
+        <h3>Full Stack Developer Sênior</h3>
+        <p>Do backend Node.js / Python ao frontend React / Next.js. 18 anos migrando sistemas legados PHP/Laravel e construindo produtos do zero ao escalável.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="section reveal" aria-label="Números de credibilidade">
+    <div class="stats">
+      <div class="stat"><div class="num">2006</div><div class="lbl">Início da carreira</div></div>
+      <div class="stat"><div class="num">18+</div><div class="lbl">Anos de engenharia</div></div>
+      <div class="stat"><div class="num">5+</div><div class="lbl">LLMs em produção</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lbl">Agentes que não param</div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="h-sobre">
+    <div class="section-head"><h2 id="h-sobre">Sobre</h2></div>
+    <details class="about">
+      <summary>
+        <span>Conheça minha trajetória</span>
+        <span class="hint">leitura de ~40s
+          <span class="caret" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </span>
+      </summary>
+      <div class="about-body">
+        <p class="lead">Comecei em <strong>2006</strong> com PHP clássico — Laravel, CodeIgniter e Zend. Ao longo de 18 anos evoluí para Node.js, React, Next.js e Python, até chegar onde o mercado vai: <strong>arquitetura de AI Agents e automação inteligente</strong>.</p>
+        <p>Hoje projeto sistemas que <strong>pensam, decidem e agem</strong>. Como AI Automation Specialist, construo agentes de IA para os verticais de crédito e saúde — qualificação de leads, agendamento e atendimento 24/7 via WhatsApp. Também desenvolvo um SaaS de gestão inteligente para restaurantes: IA operacional real, não um chatbot.</p>
+        <p>Minha vantagem é rara: unir a robustez de quem já <strong>migrou sistemas legados sem parar a operação</strong> com a fluência nos principais LLMs — Claude, GPT, Gemini, DeepSeek e Grok — e em servidores <strong>MCP</strong> que conectam IA a fluxos de negócio reais.</p>
+        <p class="sign">"Unindo 18 anos de engenharia com a inteligência do futuro — construindo hoje o que o mercado precisará amanhã."</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section reveal" aria-labelledby="h-stack">
+    <div class="section-head"><h2 id="h-stack">Stack — ponto de partida</h2></div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="ticker">
+        <span class="tech"><b>n8n</b></span>
+        <span class="tech">LangChain</span>
+        <span class="tech">LangGraph</span>
+        <span class="tech"><b>MCP</b></span>
+        <span class="tech">Claude</span>
+        <span class="tech">GPT</span>
+        <span class="tech">Gemini</span>
+        <span class="tech">Node.js</span>
+        <span class="tech">Next.js</span>
+        <span class="tech">React</span>
+        <span class="tech">Python</span>
+        <span class="tech"><b>Docker</b></span>
+        <span class="tech">PostgreSQL</span>
+        <span class="tech">Supabase</span>
+        <span class="tech">Solidity</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="h-links">
+    <div class="section-head"><h2 id="h-links">Conecte-se</h2></div>
+    <div class="links">
+      <a class="link" href="https://github.com/brunopelatieri" target="_blank" rel="noopener">
+        <span class="lico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg></span>
+        <span class="meta">GitHub <small>github.com/brunopelatieri</small></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="link" href="https://www.linkedin.com/in/bruno-pelatieri-goulart/" target="_blank" rel="noopener">
+        <span class="lico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></span>
+        <span class="meta">LinkedIn <small>in/bruno-pelatieri-goulart</small></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="link" href="https://gitlab.com/brunopelatieri" target="_blank" rel="noopener">
+        <span class="lico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m23.6 9.6-.03-.09-3.27-8.52a.85.85 0 0 0-1.62.09L16.49 8H7.5L5.3 1.08a.85.85 0 0 0-1.62-.09L.42 9.5l-.03.1a6.05 6.05 0 0 0 2.01 6.99l.01.01.03.02 4.96 3.72 2.46 1.86 1.5 1.13a1 1 0 0 0 1.2 0l1.5-1.13 2.46-1.86 4.99-3.74.01-.01A6.05 6.05 0 0 0 23.6 9.6Z"/></svg></span>
+        <span class="meta">GitLab <small>gitlab.com/brunopelatieri</small></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="link" href="mailto:brunopelatieri@gmail.com" rel="noopener">
+        <span class="lico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg></span>
+        <span class="meta">E-mail <small>brunopelatieri@gmail.com</small></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="h-social">
+    <div class="section-head"><h2 id="h-social">Redes</h2></div>
+    <div class="social-grid">
+      <a class="social" href="https://www.youtube.com/@brunopelatieri" target="_blank" rel="noopener" aria-label="YouTube de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.13C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.52A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.12 2.13c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 0 0 2.12-2.13A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+      </a>
+      <a class="social" href="https://x.com/brunopelatieri" target="_blank" rel="noopener" aria-label="X (Twitter) de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26L22.5 21.75h-6.66l-5.22-6.82-5.97 6.82H1.34l7.73-8.84L1.5 2.25h6.83l4.71 6.23 5.2-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg>
+      </a>
+      <a class="social" href="https://www.instagram.com/brunopelatieri/" target="_blank" rel="noopener" aria-label="Instagram de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="social" href="https://www.tiktok.com/@brunopelatieri" target="_blank" rel="noopener" aria-label="TikTok de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v12.96a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-.74-5.08V9.94a5.78 5.78 0 0 0-5.42 5.76A5.77 5.77 0 0 0 9.36 21.5a5.77 5.77 0 0 0 5.77-5.77V9.06a7.45 7.45 0 0 0 4.35 1.39V7.25a4.28 4.28 0 0 1-2.88-1.43Z"/></svg>
+      </a>
+      <a class="social" href="https://www.facebook.com/bruno.pelatierigoulart" target="_blank" rel="noopener" aria-label="Facebook de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6 4.39 10.97 10.13 11.88v-8.4H7.08v-3.48h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.48h-2.8v8.4C19.61 23.04 24 18.07 24 12.07Z"/></svg>
+      </a>
+      <a class="social" href="https://hub.docker.com/u/brunopelatieri" target="_blank" rel="noopener" aria-label="Docker Hub de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.5 9.3c-.5-.35-1.7-.48-2.6-.3-.12-.86-.6-1.6-1.45-2.27l-.5-.33-.33.5c-.43.65-.6 1.55-.4 2.4.1.4.3.8.6 1.1-.25.15-.7.35-1.3.34H1.06l-.04.25a5.7 5.7 0 0 0 .57 3.3c.6 1.1 1.5 1.9 2.66 2.36 1.3.5 3.43.8 5.6.62 1.6-.13 3.2-.5 4.7-1.34a9.6 9.6 0 0 0 2.6-2.2c.7-.95 1.2-2 1.55-2.96h.2c.95 0 1.55-.38 1.88-.7.22-.2.4-.46.5-.76l.08-.24-.36-.27ZM2.4 9.5h2v2h-2v-2Zm2.6 0h2v2H5v-2Zm2.7 0h2v2h-2v-2Zm2.7 0h2v2h-2v-2Zm-5.4-2.5h2v2H5v-2Zm2.7 0h2v2h-2v-2Zm2.7 0h2v2h-2v-2Zm0-2.5h2v2h-2v-2Z"/></svg>
+      </a>
+      <a class="social" href="https://wa.me/5519992496598" target="_blank" rel="noopener" aria-label="WhatsApp de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      </a>
+      <a class="social" href="mailto:brunopelatieri@gmail.com" rel="noopener" aria-label="E-mail de Bruno Goulart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer reveal">
+    <img src="public/images/bruno_goulart_logo_only_icon.webp"
+         alt="Ícone da marca Bruno Goulart"
+         width="34" height="34" style="opacity:.85" />
+    <p class="domain">bru<span>.</span>ia<span>.</span>br</p>
+    <p class="fnote">© <span id="year">2026</span> Bruno Pelatieri Goulart · Site oficial: <a href="https://brunogoulart.com.br" target="_blank" rel="noopener">brunogoulart.com.br</a></p>
+    <p class="fnote">AI Automation Specialist · Especialista em Automação com IA · Full Stack Developer Sênior</p>
+    <p class="fnote credit">Gostou desta Bio? <a href="https://github.com/brunopelatieri/bio-page-hype-tech" target="_blank" rel="noopener">Faça um fork ou clone no GitHub</a> — é só manter os créditos.</p>
+    <p class="fnote credit">Concebida por <strong>Bruno Goulart</strong> (AI Prompt Engineering) &amp; executada por <strong>Claude Opus 4.8</strong>.</p>
+  </footer>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://brunogoulart.com.br/#person",
+      "name": "Bruno Pelatieri Goulart",
+      "alternateName": ["Bruno Pelatieri", "Bruno Goulart"],
+      "jobTitle": "AI Automation Specialist & Full Stack Developer",
+      "description": "Especialista em Automação com IA e Full Stack Developer Sênior com 18+ anos de experiência, focado em AI Agents, automação com n8n/LangChain/LangGraph, servidores MCP e arquitetura enterprise DevOps.",
+      "url": "https://brunogoulart.com.br",
+      "image": "https://bru.ia.br/public/images/bruno_pelatieri_goulart_bizu_bru_ia.webp",
+      "email": "mailto:brunopelatieri@gmail.com",
+      "telephone": "+55-19-99249-6598",
+      "gender": "Male",
+      "knowsAbout": [
+        "AI Automation Specialist",
+        "Especialista em Automação com IA",
+        "Full Stack Developer Sênior",
+        "AI Agents",
+        "n8n",
+        "LangChain",
+        "LangGraph",
+        "Model Context Protocol (MCP)",
+        "Prompt Engineering",
+        "Node.js",
+        "Python",
+        "React",
+        "Next.js",
+        "PHP",
+        "Laravel",
+        "DevOps",
+        "Docker",
+        "Solidity",
+        "Web3"
+      ],
+      "knowsLanguage": ["pt-BR", "en"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Campinas",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "worksFor": { "@type": "Organization", "name": "Phyonext" },
+      "sameAs": [
+        "https://github.com/brunopelatieri",
+        "https://gitlab.com/brunopelatieri",
+        "https://www.linkedin.com/in/bruno-pelatieri-goulart/",
+        "https://www.youtube.com/@brunopelatieri",
+        "https://www.tiktok.com/@brunopelatieri",
+        "https://x.com/brunopelatieri",
+        "https://www.instagram.com/brunopelatieri/",
+        "https://www.facebook.com/bruno.pelatierigoulart",
+        "https://hub.docker.com/u/brunopelatieri",
+        "https://brunogoulart.com.br"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bru.ia.br/#website",
+      "url": "https://bru.ia.br/",
+      "name": "Bruno Goulart",
+      "alternateName": "Bruno Pelatieri Goulart",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://brunogoulart.com.br/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://bru.ia.br/#webpage",
+      "url": "https://bru.ia.br/",
+      "name": "Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior",
+      "isPartOf": { "@id": "https://bru.ia.br/#website" },
+      "about": { "@id": "https://brunogoulart.com.br/#person" },
+      "mainEntity": { "@id": "https://brunogoulart.com.br/#person" },
+      "inLanguage": "pt-BR",
+      "primaryImageOfPage": "https://bru.ia.br/public/images/og-image.webp"
+    }
+  ]
+}
+</script>
+
+<script defer>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Role rotator */
+  var roles = [
+    "AI Automation Specialist",
+    "Especialista em Automação com IA",
+    "Full Stack Developer Sênior",
+    "Arquiteto de AI Agents",
+    "DevOps & n8n Engineer"
+  ];
+  var rEl = document.getElementById("rotator");
+  if (rEl && !reduce) {
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % roles.length;
+      rEl.style.transition = "opacity .35s ease";
+      rEl.style.opacity = "0";
+      setTimeout(function () {
+        rEl.textContent = roles[i];
+        rEl.style.opacity = "1";
+      }, 350);
+    }, 3000);
+  }
+
+  /* Duplicate ticker for seamless loop */
+  var track = document.getElementById("ticker");
+  if (track) { track.innerHTML += track.innerHTML; }
+
+  /* Reveal on scroll */
+  var items = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el, idx) {
+      el.style.transitionDelay = Math.min(idx * 60, 360) + "ms";
+      io.observe(el);
+    });
+  } else {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* Particle data-network background */
+  var canvas = document.getElementById("net");
+  if (!canvas || reduce) { return; }
+  var ctx = canvas.getContext("2d");
+  var w, h, dpr, nodes = [];
+  var colors = ["rgba(60,80,196,", "rgba(16,148,228,", "rgba(0,204,184,", "rgba(177,76,240,"];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.width = innerWidth * dpr;
+    h = canvas.height = innerHeight * dpr;
+    canvas.style.width = innerWidth + "px";
+    canvas.style.height = innerHeight + "px";
+    var target = Math.min(70, Math.floor((innerWidth * innerHeight) / 17000));
+    nodes = [];
+    for (var k = 0; k < target; k++) {
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.22 * dpr,
+        vy: (Math.random() - 0.5) * 0.22 * dpr,
+        r: (Math.random() * 1.6 + 0.6) * dpr,
+        c: colors[(Math.random() * colors.length) | 0]
+      });
+    }
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+    var maxD = 130 * dpr;
+    for (var a = 0; a < nodes.length; a++) {
+      var n = nodes[a];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+      for (var b = a + 1; b < nodes.length; b++) {
+        var m = nodes[b];
+        var dx = n.x - m.x, dy = n.y - m.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxD) {
+          var o = (1 - dist / maxD) * 0.32;
+          ctx.strokeStyle = n.c + o + ")";
+          ctx.lineWidth = 0.6 * dpr;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+      ctx.fillStyle = n.c + "0.85)";
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+
+  var rt;
+  addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(resize, 200); });
+  resize();
+  requestAnimationFrame(step);
+})();
+</script>
+
+<!--
+BEHAVIORAL PSYCHOLOGY CHECKLIST (implemented)
+- Authority      : H1 nome + "18+ anos / desde 2006", multi-LLM, verticais reais (crédito/saúde/SaaS), open source
+- Social proof   : stats de credibilidade + redes verificáveis (GitHub/GitLab/LinkedIn)
+- Scarcity/urgency (soft, honest): status "Disponível para projetos" (sem countdown falso)
+- Commitment     : CTA de baixa fricção (WhatsApp, 1 toque)
+- Clarity bias   : CTA primário (WhatsApp + Site) acima da dobra; hierarquia clara
+- Cognitive fluency: 3 tiers de leitura (Pareto) — punch line, 3 pilares, "Sobre" expansível
+- Loss aversion  : "agentes que trabalham 24/7" vs. processo manual
+
+SEO PILLARS (implemented)
+- JSON-LD @graph: Person (sameAs completo) + WebSite + ProfilePage
+- Open Graph + Twitter summary_large_image (@brunopelatieri)
+- H1 solitário; descida semântica H1 -> H2 -> H3
+- alt rico em palavras-chave em todas as <img>; width/height para CLS < 0.1
+- lang=pt-BR; canonical self-referencing bru.ia.br; Person.url = brunogoulart.com.br
+-->
+</body>
+</html>
