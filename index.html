@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#05060d" />
 
-<title>Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior</title>
-<meta name="description" content="Bruno Goulart (Bruno Pelatieri Goulart) — Especialista em Automação com IA e Full Stack Developer Sênior. 18+ anos construindo AI Agents, automação n8n/LangChain e arquitetura enterprise. Fale agora." />
+<title>Bruno Goulart — AI Automation Specialist & Full Stack Developer</title>
+<meta name="description" content="Bruno Goulart (Bruno Pelatieri Goulart) — Especialista em Automação com IA e Full Stack Developer. 18+ anos construindo AI Agents, automação n8n/LangChain e arquitetura enterprise. Fale agora." />
 <meta name="author" content="Bruno Pelatieri Goulart" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="keywords" content="Bruno Goulart, Bruno Pelatieri Goulart, AI Automation Specialist, Especialista em Automação com IA, Full Stack Developer Sênior, AI Agents, n8n, LangChain, LangGraph, MCP, DevOps" />
+<meta name="keywords" content="Bruno Goulart, Bruno Pelatieri Goulart, AI Automation Specialist, Especialista em Automação com IA, Full Stack Developer, AI Agents, n8n, LangChain, LangGraph, MCP, DevOps" />
 <link rel="canonical" href="https://bru.ia.br/" />
 
 <!-- Open Graph / Social Graph -->
@@ -17,10 +17,10 @@
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://bru.ia.br/" />
-<meta property="og:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior" />
-<meta property="og:description" content="18+ anos de engenharia + a inteligência do futuro. Construo AI Agents que trabalham 24/7, automação com n8n/LangChain e arquitetura enterprise. Vamos conversar." />
+<meta property="og:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer" />
+<meta property="og:description" content="18+ anos de código + a inteligência do futuro. Construo AI Agents que trabalham 24/7, automação com n8n/LangChain e arquitetura enterprise. Vamos conversar." />
 <meta property="og:image" content="https://bru.ia.br/public/images/og-image.webp" />
-<meta property="og:image:alt" content="Bruno Pelatieri Goulart — AI Automation Specialist e Full Stack Developer Sênior" />
+<meta property="og:image:alt" content="Bruno Pelatieri Goulart — AI Automation Specialist e Full Stack Developer" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
@@ -28,8 +28,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@brunopelatieri" />
 <meta name="twitter:creator" content="@brunopelatieri" />
-<meta name="twitter:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior" />
-<meta name="twitter:description" content="Transformo processos em agentes de IA que trabalham 24/7. 18+ anos de engenharia full stack + automação inteligente. Campinas/SP — remoto." />
+<meta name="twitter:title" content="Bruno Goulart — AI Automation Specialist & Full Stack Developer" />
+<meta name="twitter:description" content="Transformo processos em agentes de IA que trabalham 24/7. 18+ anos de código full stack + automação inteligente. Campinas/SP — remoto." />
 <meta name="twitter:image" content="https://bru.ia.br/public/images/og-image.webp" />
 <meta name="twitter:image:alt" content="Bruno Pelatieri Goulart — Especialista em Automação com IA" />
 
@@ -62,6 +62,11 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
+  --text-base: 16px;
+  --leading-base: 1.625; /* 26px — proporcional ao corpo 16px */
+  --text-min: 14px;
+  --leading-min: 1.571; /* 22px — proporcional ao mínimo 14px */
+
   --r-sm: 12px;
   --r-md: 18px;
   --r-lg: 24px;
@@ -78,35 +83,65 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  min-height: 100%;
+  background: var(--bg);
+}
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  font-size: var(--text-base);
+  background: transparent;
   color: var(--text);
-  line-height: 1.65;
+  line-height: var(--leading-base);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  position: relative;
 }
 
 /* ---------- Background layers ---------- */
-.bg-canvas,
-.aurora,
-.grid-overlay,
-.vignette,
-.noise {
+.bg-stack {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 12% -8%, rgba(60, 80, 196, 0.42), transparent 55%),
+    radial-gradient(ellipse 80% 55% at 92% 108%, rgba(177, 76, 240, 0.28), transparent 52%),
+    radial-gradient(ellipse 70% 50% at 50% 42%, rgba(0, 204, 184, 0.14), transparent 58%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(16, 148, 228, 0.10), transparent 60%),
+    var(--bg);
+  animation: meshShift 20s ease-in-out infinite alternate;
 }
 
-.bg-canvas { z-index: 0; }
+@keyframes meshShift {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(12deg) brightness(1.06); }
+}
 
-.aurora { z-index: -1; overflow: hidden; }
+.bg-stack > .aurora,
+.bg-stack > .bg-canvas,
+.bg-stack > .grid-overlay,
+.bg-stack > .vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.bg-stack .bg-canvas {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bg-stack .aurora { z-index: 0; overflow: hidden; }
+.bg-stack .grid-overlay { z-index: 2; }
+.bg-stack .vignette { z-index: 3; }
+
 .aurora::before,
 .aurora::after,
 .aurora .blob {
@@ -115,53 +150,53 @@ body {
   width: 60vmax;
   height: 60vmax;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.42;
+  filter: blur(72px);
+  opacity: 0.55;
   will-change: transform;
 }
 .aurora::before {
-  background: radial-gradient(circle, var(--indigo), transparent 62%);
+  background: radial-gradient(circle, rgba(60, 80, 196, 0.95), transparent 62%);
   top: -22%; left: -18%;
   animation: drift1 26s ease-in-out infinite;
 }
 .aurora::after {
-  background: radial-gradient(circle, var(--magenta), transparent 62%);
+  background: radial-gradient(circle, rgba(177, 76, 240, 0.85), transparent 62%);
   bottom: -26%; right: -20%;
-  opacity: 0.3;
+  opacity: 0.45;
   animation: drift2 32s ease-in-out infinite;
 }
 .aurora .blob {
-  background: radial-gradient(circle, var(--teal), transparent 60%);
+  background: radial-gradient(circle, rgba(0, 204, 184, 0.85), transparent 60%);
   top: 38%; left: 46%;
   width: 44vmax; height: 44vmax;
-  opacity: 0.22;
+  opacity: 0.35;
+  transform: translate(-50%, -50%);
   animation: drift3 28s ease-in-out infinite;
 }
 
 @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(8vw,6vh) scale(1.12)} }
 @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-7vw,-5vh) scale(1.18)} }
-@keyframes drift3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-42%,-58%) scale(1.1)} }
+@keyframes drift3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) translate(4vw,-4vh) scale(1.1)} }
 
 .grid-overlay {
-  z-index: 0;
   background-image:
-    linear-gradient(rgba(120, 140, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120, 140, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(120, 140, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 140, 255, 0.12) 1px, transparent 1px);
   background-size: 46px 46px;
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 22%, #000 0%, transparent 80%);
-          mask-image: radial-gradient(ellipse 80% 70% at 50% 22%, #000 0%, transparent 80%);
-  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(ellipse 100% 85% at 50% 30%, #000 0%, transparent 88%);
+          mask-image: radial-gradient(ellipse 100% 85% at 50% 30%, #000 0%, transparent 88%);
+  opacity: 0.85;
 }
 
 .vignette {
-  z-index: 1;
-  background: radial-gradient(ellipse 120% 90% at 50% 0%, transparent 40%, rgba(2, 3, 8, 0.55) 100%);
+  background: radial-gradient(ellipse 120% 90% at 50% 0%, transparent 55%, rgba(2, 3, 8, 0.35) 100%);
 }
 
 /* ---------- Stage / 9:16 column ---------- */
 .stage {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  background: transparent;
   max-width: var(--content-w);
   margin: 0 auto;
   padding: clamp(22px, 6vw, 40px) clamp(18px, 5vw, 26px) 40px;
@@ -175,7 +210,7 @@ body {
     margin: 26px auto;
     border-radius: 34px;
     border: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(12, 14, 28, 0.55), rgba(6, 7, 16, 0.55));
+    background: linear-gradient(180deg, rgba(12, 14, 28, 0.38), rgba(6, 7, 16, 0.38));
     box-shadow:
       0 40px 120px -40px rgba(0, 0, 0, 0.95),
       0 0 0 1px rgba(60, 80, 196, 0.10),
@@ -196,7 +231,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11.5px;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text);
@@ -280,7 +316,8 @@ h1 {
 .role .rotator { color: var(--teal); font-weight: 600; }
 
 .tagline {
-  font-size: 14.5px;
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
   color: var(--muted);
   max-width: 38ch;
   margin: 2px auto 0;
@@ -291,14 +328,18 @@ h1 {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: 7px 8px; margin-top: 4px;
 }
+.meta-row .status { flex: 0 0 100%; justify-content: center; }
 .chip {
-  font-size: 11.5px; font-weight: 500;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-weight: 500;
   color: var(--muted);
   padding: 5px 11px;
   border-radius: var(--r-pill);
   background: var(--surface);
   border: 1px solid var(--border);
   display: inline-flex; align-items: center; gap: 6px;
+  margin:14px 0px;
 }
 .chip svg { width: 13px; height: 13px; opacity: 0.8; }
 
@@ -340,17 +381,20 @@ h1 {
   border-color: transparent;
   color: #fff;
   box-shadow: 0 14px 34px -16px rgba(60, 80, 196, 0.85);
+  margin-top: 10px;
 }
 .btn--brand:hover { box-shadow: 0 18px 42px -14px rgba(16, 148, 228, 0.9); filter: brightness(1.06); }
 
 /* ---------- Section ---------- */
-.section { display: flex; flex-direction: column; gap: 14px; }
+.section { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
 .section-head {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
 }
 .section-head h2 {
   font-family: var(--font-display);
-  font-size: 12px; font-weight: 600;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--faint);
   white-space: nowrap;
@@ -387,7 +431,7 @@ h1 {
   font-size: 15px; font-weight: 600; color: var(--text);
   margin-bottom: 3px; letter-spacing: -0.01em;
 }
-.pillar p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.pillar p { font-size: var(--text-min); color: var(--muted); line-height: var(--leading-min); }
 
 /* ---------- Stats ---------- */
 .stats {
@@ -409,7 +453,7 @@ h1 {
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
-.stat .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.02em; margin-top: 2px; }
+.stat .lbl { font-size: var(--text-min); line-height: var(--leading-min); color: var(--muted); letter-spacing: 0.02em; margin-top: 2px; }
 
 /* ---------- About (expandable) ---------- */
 .about {
@@ -425,22 +469,27 @@ h1 {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px;
   font-family: var(--font-display);
-  font-size: 14px; font-weight: 600; color: var(--text);
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-weight: 600; color: var(--text);
 }
 .about > summary::-webkit-details-marker { display: none; }
-.about > summary .hint { font-size: 11.5px; color: var(--faint); font-weight: 500; font-family: var(--font-body); }
+.about > summary .hint { font-size: var(--text-min); line-height: var(--leading-min); color: var(--faint); font-weight: 500; font-family: var(--font-body); }
 .about > summary .caret { transition: transform 0.3s ease; color: var(--blue); display: inline-flex; }
 .about[open] > summary .caret { transform: rotate(180deg); }
 .about .about-body {
   padding: 0 18px 18px;
   display: flex; flex-direction: column; gap: 12px;
 }
-.about-body p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.about-body p { font-size: var(--text-min); color: var(--muted); line-height: var(--leading-min); }
 .about-body p strong { color: var(--text); font-weight: 600; }
-.about-body .lead { font-size: 14px; color: var(--text); }
+.about-body .lead { font-size: var(--text-base); line-height: var(--leading-base); color: var(--text); }
 .about-body .sign {
   font-family: var(--font-display);
-  font-size: 13px; font-style: italic; color: var(--blue);
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-style: italic;
+  color: var(--blue);
   border-left: 2px solid var(--border-glow);
   padding-left: 12px;
 }
@@ -460,7 +509,9 @@ h1 {
 @keyframes scroll { to { transform: translateX(-50%); } }
 .tech {
   font-family: var(--font-display);
-  font-size: 12.5px; font-weight: 500;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-weight: 500;
   color: var(--text);
   padding: 8px 14px;
   border-radius: var(--r-pill);
@@ -483,7 +534,9 @@ h1 {
   border: 1px solid var(--border);
   text-decoration: none;
   color: var(--text);
-  font-weight: 600; font-size: 14px;
+  font-weight: 600;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
   transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 .link:hover {
@@ -495,8 +548,8 @@ h1 {
 .link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .link .lico { width: 24px; height: 24px; display: grid; place-items: center; color: var(--blue); }
 .link .lico svg { width: 22px; height: 22px; }
-.link .meta { display: flex; flex-direction: column; line-height: 1.25; }
-.link .meta small { font-size: 11.5px; font-weight: 500; color: var(--faint); }
+.link .meta { display: flex; flex-direction: column; line-height: var(--leading-min); }
+.link .meta small { font-size: var(--text-min); line-height: var(--leading-min); font-weight: 500; color: var(--faint); }
 .link .arrow { color: var(--faint); transition: transform 0.18s ease, color 0.18s ease; }
 .link:hover .arrow { transform: translate(3px, -3px); color: var(--teal); }
 
@@ -522,18 +575,20 @@ h1 {
 .footer {
   text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  padding-top: 8px;
+  padding-top: 18px;
 }
-.footer .fnote { font-size: 11.5px; color: var(--faint); }
+.footer .fnote { font-size: var(--text-min); line-height: var(--leading-min); color: var(--faint); }
 .footer .domain {
   font-family: var(--font-display);
-  font-size: 13px; font-weight: 600;
+  font-size: var(--text-min);
+  line-height: var(--leading-min);
+  font-weight: 600;
   color: var(--text);
 }
 .footer .domain span { color: var(--teal); }
 .footer a { color: var(--muted); text-decoration: none; }
 .footer a:hover { color: var(--text); }
-.footer .credit { font-size: 10.5px; color: rgba(107, 114, 153, 0.7); margin-top: 2px; }
+.footer .credit { font-size: var(--text-min); line-height: var(--leading-min); color: rgba(107, 114, 153, 0.7); margin-top: 2px; }
 .footer .credit strong { color: var(--muted); font-weight: 600; }
 .footer .credit a { color: var(--faint); text-decoration: underline; text-underline-offset: 2px; }
 .footer .credit a:hover { color: var(--teal); }
@@ -544,18 +599,23 @@ h1 {
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; }
-  .ticker-track { animation: none; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none !important; }
+  .ticker-track { animation: none !important; }
+  .avatar-ring { animation: none !important; }
+  h1 { animation: none !important; }
+  .status .dot { animation: none !important; }
 }
 </style>
 </head>
 <body>
 
-<canvas class="bg-canvas" id="net" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><div class="blob"></div></div>
-<div class="grid-overlay" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
+<div class="bg-stack" aria-hidden="true">
+  <div class="aurora"><div class="blob"></div></div>
+  <canvas class="bg-canvas" id="net"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="vignette"></div>
+</div>
 
 <main class="stage">
 
@@ -563,7 +623,6 @@ h1 {
     <img class="brand-logo" src="public/images/bruno_goulart_logo_horizontal.webp"
          alt="Logo Bruno Goulart — Especialista em Automação com IA e Full Stack Developer"
          width="150" height="26" />
-    <span class="status"><span class="dot" aria-hidden="true"></span> Disponível para projetos</span>
   </header>
 
   <section class="hero reveal" aria-labelledby="page-title">
@@ -571,28 +630,25 @@ h1 {
       <span class="avatar-glow" aria-hidden="true"></span>
       <span class="avatar-ring" aria-hidden="true"></span>
       <img class="avatar" src="public/images/bruno_pelatieri_goulart_bizu_bru_ia.webp"
-           alt="Foto de Bruno Pelatieri Goulart, AI Automation Specialist e Full Stack Developer Sênior em Campinas, SP"
+           alt="Foto de Bruno Pelatieri Goulart, AI Automation Specialist e Full Stack Developer em Campinas, SP"
            width="116" height="116" />
     </div>
 
     <h1 id="page-title">Bruno Pelatieri Goulart</h1>
 
-    <p class="role" aria-label="AI Automation Specialist e Full Stack Developer Sênior">
+    <p class="role" aria-label="AI Automation Specialist e Full Stack Developer">
       <span class="rotator" id="rotator">AI Automation Specialist</span>
     </p>
 
     <p class="tagline">
-      Transformo processos em <strong>agentes de IA que trabalham 24/7</strong> — unindo 18 anos de engenharia à inteligência do futuro.
+      Transformo processos em <strong>agentes de IA que trabalham 24/7</strong>, unindo 18 anos de código escrito na raça e forjado no braço à inteligência do futuro.
     </p>
 
     <div class="meta-row" aria-hidden="false">
+      <span class="status"><span class="dot" aria-hidden="true"></span> Disponível para projetos</span>
       <span class="chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         Campinas · SP
-      </span>
-      <span class="chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        18+ anos · desde 2006
       </span>
       <span class="chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
@@ -634,7 +690,7 @@ h1 {
     <article class="pillar">
       <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/><path d="m13 4-2 16"/></svg></span>
       <div>
-        <h3>Full Stack Developer Sênior</h3>
+        <h3>Full Stack Developer</h3>
         <p>Do backend Node.js / Python ao frontend React / Next.js. 18 anos migrando sistemas legados PHP/Laravel e construindo produtos do zero ao escalável.</p>
       </div>
     </article>
@@ -643,7 +699,7 @@ h1 {
   <section class="section reveal" aria-label="Números de credibilidade">
     <div class="stats">
       <div class="stat"><div class="num">2006</div><div class="lbl">Início da carreira</div></div>
-      <div class="stat"><div class="num">18+</div><div class="lbl">Anos de engenharia</div></div>
+      <div class="stat"><div class="num">18+</div><div class="lbl">Anos de código</div></div>
       <div class="stat"><div class="num">5+</div><div class="lbl">LLMs em produção</div></div>
       <div class="stat"><div class="num">24/7</div><div class="lbl">Agentes que não param</div></div>
     </div>
@@ -664,7 +720,7 @@ h1 {
         <p class="lead">Comecei em <strong>2006</strong> com PHP clássico — Laravel, CodeIgniter e Zend. Ao longo de 18 anos evoluí para Node.js, React, Next.js e Python, até chegar onde o mercado vai: <strong>arquitetura de AI Agents e automação inteligente</strong>.</p>
         <p>Hoje projeto sistemas que <strong>pensam, decidem e agem</strong>. Como AI Automation Specialist, construo agentes de IA para os verticais de crédito e saúde — qualificação de leads, agendamento e atendimento 24/7 via WhatsApp. Também desenvolvo um SaaS de gestão inteligente para restaurantes: IA operacional real, não um chatbot.</p>
         <p>Minha vantagem é rara: unir a robustez de quem já <strong>migrou sistemas legados sem parar a operação</strong> com a fluência nos principais LLMs — Claude, GPT, Gemini, DeepSeek e Grok — e em servidores <strong>MCP</strong> que conectam IA a fluxos de negócio reais.</p>
-        <p class="sign">"Unindo 18 anos de engenharia com a inteligência do futuro — construindo hoje o que o mercado precisará amanhã."</p>
+        <p class="sign">"Unindo 18 anos de código com a inteligência do futuro — construindo hoje o que o mercado precisará amanhã."</p>
       </div>
     </details>
   </section>
@@ -754,10 +810,10 @@ h1 {
   <footer class="footer reveal">
     <img src="public/images/bruno_goulart_logo_only_icon.webp"
          alt="Ícone da marca Bruno Goulart"
-         width="34" height="34" style="opacity:.85" />
+         width="120" />
     <p class="domain">bru<span>.</span>ia<span>.</span>br</p>
     <p class="fnote">© <span id="year">2026</span> Bruno Pelatieri Goulart · Site oficial: <a href="https://brunogoulart.com.br" target="_blank" rel="noopener">brunogoulart.com.br</a></p>
-    <p class="fnote">AI Automation Specialist · Especialista em Automação com IA · Full Stack Developer Sênior</p>
+    <p class="fnote">AI Automation Specialist · Especialista em Automação com IA · Full Stack Developer</p>
     <p class="fnote credit">Gostou desta Bio? <a href="https://github.com/brunopelatieri/bio-page-hype-tech" target="_blank" rel="noopener">Faça um fork ou clone no GitHub</a> — é só manter os créditos.</p>
     <p class="fnote credit">Concebida por <strong>Bruno Goulart</strong> (AI Prompt Engineering) &amp; executada por <strong>Claude Opus 4.8</strong>.</p>
   </footer>
@@ -774,7 +830,7 @@ h1 {
       "name": "Bruno Pelatieri Goulart",
       "alternateName": ["Bruno Pelatieri", "Bruno Goulart"],
       "jobTitle": "AI Automation Specialist & Full Stack Developer",
-      "description": "Especialista em Automação com IA e Full Stack Developer Sênior com 18+ anos de experiência, focado em AI Agents, automação com n8n/LangChain/LangGraph, servidores MCP e arquitetura enterprise DevOps.",
+      "description": "Especialista em Automação com IA e Full Stack Developer com 18+ anos de experiência, focado em AI Agents, automação com n8n/LangChain/LangGraph, servidores MCP e arquitetura enterprise DevOps.",
       "url": "https://brunogoulart.com.br",
       "image": "https://bru.ia.br/public/images/bruno_pelatieri_goulart_bizu_bru_ia.webp",
       "email": "mailto:brunopelatieri@gmail.com",
@@ -783,7 +839,7 @@ h1 {
       "knowsAbout": [
         "AI Automation Specialist",
         "Especialista em Automação com IA",
-        "Full Stack Developer Sênior",
+        "Full Stack Developer",
         "AI Agents",
         "n8n",
         "LangChain",
@@ -835,7 +891,7 @@ h1 {
       "@type": "ProfilePage",
       "@id": "https://bru.ia.br/#webpage",
       "url": "https://bru.ia.br/",
-      "name": "Bruno Goulart — AI Automation Specialist & Full Stack Developer Sênior",
+      "name": "Bruno Goulart — AI Automation Specialist & Full Stack Developer",
       "isPartOf": { "@id": "https://bru.ia.br/#website" },
       "about": { "@id": "https://brunogoulart.com.br/#person" },
       "mainEntity": { "@id": "https://brunogoulart.com.br/#person" },
@@ -857,7 +913,7 @@ h1 {
   var roles = [
     "AI Automation Specialist",
     "Especialista em Automação com IA",
-    "Full Stack Developer Sênior",
+    "Full Stack Developer",
     "Arquiteto de AI Agents",
     "DevOps & n8n Engineer"
   ];
@@ -897,34 +953,35 @@ h1 {
 
   /* Particle data-network background */
   var canvas = document.getElementById("net");
-  if (!canvas || reduce) { return; }
+  if (!canvas) { return; }
   var ctx = canvas.getContext("2d");
+  if (!ctx) { return; }
   var w, h, dpr, nodes = [];
   var colors = ["rgba(60,80,196,", "rgba(16,148,228,", "rgba(0,204,184,", "rgba(177,76,240,"];
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.width = innerWidth * dpr;
-    h = canvas.height = innerHeight * dpr;
-    canvas.style.width = innerWidth + "px";
-    canvas.style.height = innerHeight + "px";
-    var target = Math.min(70, Math.floor((innerWidth * innerHeight) / 17000));
+    w = canvas.width = window.innerWidth * dpr;
+    h = canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    var target = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 14000));
     nodes = [];
     for (var k = 0; k < target; k++) {
       nodes.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.22 * dpr,
-        vy: (Math.random() - 0.5) * 0.22 * dpr,
-        r: (Math.random() * 1.6 + 0.6) * dpr,
+        vx: (Math.random() - 0.5) * 0.35 * dpr,
+        vy: (Math.random() - 0.5) * 0.35 * dpr,
+        r: (Math.random() * 1.8 + 0.8) * dpr,
         c: colors[(Math.random() * colors.length) | 0]
       });
     }
   }
 
-  function step() {
+  function draw() {
     ctx.clearRect(0, 0, w, h);
-    var maxD = 130 * dpr;
+    var maxD = 150 * dpr;
     for (var a = 0; a < nodes.length; a++) {
       var n = nodes[a];
       n.x += n.vx; n.y += n.vy;
@@ -935,27 +992,37 @@ h1 {
         var dx = n.x - m.x, dy = n.y - m.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < maxD) {
-          var o = (1 - dist / maxD) * 0.32;
+          var o = (1 - dist / maxD) * 0.52;
           ctx.strokeStyle = n.c + o + ")";
-          ctx.lineWidth = 0.6 * dpr;
+          ctx.lineWidth = 0.85 * dpr;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(m.x, m.y);
           ctx.stroke();
         }
       }
-      ctx.fillStyle = n.c + "0.85)";
+      ctx.fillStyle = n.c + "1)";
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fill();
     }
+  }
+
+  function step() {
+    draw();
     requestAnimationFrame(step);
   }
 
   var rt;
-  addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(resize, 200); });
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      resize();
+      draw();
+    }, 200);
+  });
   resize();
-  requestAnimationFrame(step);
+  step();
 })();
 </script>
 
